@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "./WebApp.elements";
 import Navbar from "./components/Navbar/Navbar";
 import NavSlider from "./pages/NavSlider/NavSlider";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 const WebApp = () => {
   const [sliderOpen, setSliderOpen] = useState(false);
@@ -22,6 +23,7 @@ const WebApp = () => {
         toggleSliderClose={toggleSliderClose}
       />
       <NavSlider sliderOpen={sliderOpen} />
+      <LandingPage />
     </Container>
   );
 };
