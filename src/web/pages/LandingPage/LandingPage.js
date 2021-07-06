@@ -20,7 +20,7 @@ const LandingPage = () => {
         <SectionImg src={Section1Img} />
         <SectionContext reverse={false}>
           <SectionContextHeading heading={true}>
-            Welcome bro 👋 ! ( Meteor {"=>"} Meeting + Your )
+            Welcome peeps 👋 ! ( Meteor {"=>"} Meeting + Your )
           </SectionContextHeading>
           <SectionContextDescription>
             So why do you thing you are here ? Give me the honour to answer this
