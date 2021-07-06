@@ -6,7 +6,7 @@ import { useStateValue } from "../../../StateProvider";
 import { actionTypes } from "../../../reducer";
 
 const NavSlider = ({ sliderOpen }) => {
-  const [state, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   const signIn = () => {
     auth
@@ -20,6 +20,7 @@ const NavSlider = ({ sliderOpen }) => {
       .catch((error) => {
         alert(error.message);
       });
+    console.log(user);
   };
 
   return (
@@ -27,9 +28,11 @@ const NavSlider = ({ sliderOpen }) => {
       <Link to="/home">
         <NavSliderRow>Home</NavSliderRow>
       </Link>
-      <Link to="/dashboard">
-        <NavSliderRow>Dashboard</NavSliderRow>
-      </Link>
+      {user && (
+        <Link to="/dashboard">
+          <NavSliderRow>Dashboard</NavSliderRow>
+        </Link>
+      )}
       <a href="mailto:singh.divyansh1802@gmail.com">
         <NavSliderRow>Contact Us</NavSliderRow>
       </a>

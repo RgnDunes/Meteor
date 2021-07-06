@@ -7,7 +7,7 @@ export const actionTypes = {
 };
 
 const reducer = (state, action) => {
-  console.log(action.type);
+  // console.log(action.type);
   switch (action.type) {
     case actionTypes.SET_USER:
       return {
