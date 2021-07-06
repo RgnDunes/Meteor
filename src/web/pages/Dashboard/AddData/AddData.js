@@ -3,11 +3,12 @@ import { FormButton } from "../../../components/Form/Button.elements";
 import Input from "../../../components/Form/Input/Input";
 import { Form } from "../../../components/Form/Form.elements";
 import { FormInputDescription } from "../../../components/Form/Input/Input.elements";
-import { AddDataContainer } from "./AddData.elements";
+import { AddDataContainer, AddDataContainerHeading } from "./AddData.elements";
 
 const AddData = () => {
   return (
     <AddDataContainer>
+      <AddDataContainerHeading>- ADD MEETING -</AddDataContainerHeading>
       <Form>
         <Input type="date" label="Date" id="date" />
         <Input type="text" label="Meeting Name" id="meetingName" />

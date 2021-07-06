@@ -7,11 +7,20 @@ import {
   TableData,
 } from "../../components/Table/Table.elements";
 import { FormButton } from "../../components/Form/Button.elements";
+import { Link } from "react-router-dom";
 
 const Dasboard = () => {
   return (
     <DasboardContainer>
       <Table>
+        <TableRow>
+          <TableHeading colSpan="4">- Your Meetings -</TableHeading>
+          <TableHeading>
+            <Link to="/dashboard/add_data">
+              <FormButton>+ Add Meeting</FormButton>
+            </Link>
+          </TableHeading>
+        </TableRow>
         <TableRow>
           <TableHeading>S.No</TableHeading>
           <TableHeading>Meeting Name</TableHeading>

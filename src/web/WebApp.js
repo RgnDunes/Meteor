@@ -5,6 +5,7 @@ import NavSlider from "./pages/NavSlider/NavSlider";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AddData from "./pages/Dashboard/AddData/AddData";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const WebApp = () => {
   const [sliderOpen, setSliderOpen] = useState(false);
@@ -27,15 +28,28 @@ const WebApp = () => {
 
   return (
     <Container>
-      <Navbar
-        sliderOpen={sliderOpen}
-        toggleSliderOpen={toggleSliderOpen}
-        toggleSliderClose={toggleSliderClose}
-      />
-      <NavSlider sliderOpen={sliderOpen} />
-      <LandingPage />
-      <Dashboard />
-      <AddData />
+      <Router>
+        <Navbar
+          sliderOpen={sliderOpen}
+          toggleSliderOpen={toggleSliderOpen}
+          toggleSliderClose={toggleSliderClose}
+        />
+        <NavSlider sliderOpen={sliderOpen} />
+        <Switch>
+          <Route path="/home">
+            <LandingPage />
+          </Route>
+          <Route path="/dashboard/add_data">
+            <AddData />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/">
+            <LandingPage />
+          </Route>
+        </Switch>
+      </Router>
     </Container>
   );
 };

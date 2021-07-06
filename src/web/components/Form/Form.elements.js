@@ -8,7 +8,7 @@ export const Form = styled.form`
   flex-wrap: wrap;
   column-count: 4;
   */
-  width: 98%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;

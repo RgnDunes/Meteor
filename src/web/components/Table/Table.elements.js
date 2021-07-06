@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Table = styled.table`
+  margin-top: 100px;
   width: 98%;
   text-align: center;
   border-collapse: separate;
@@ -12,7 +13,7 @@ export const Table = styled.table`
 export const TableRow = styled.tr`
   transition: all 0.25s ease-in-out;
 
-  &:nth-of-type(even) {
+  &:nth-of-type(odd) {
     background-color: rgb(247, 249, 250);
   }
 
@@ -21,8 +22,14 @@ export const TableRow = styled.tr`
   }
 
   &:first-child,
-  &:first-child:hover {
+  &:nth-child(2),
+  &:nth-child(2):hover {
     background-color: rgb(255, 255, 255);
+  }
+
+  &:first-child {
+    font-size: 1.5em;
+    letter-spacing: 5px;
   }
 `;
 
