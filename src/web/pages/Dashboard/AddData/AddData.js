@@ -18,15 +18,15 @@ const AddData = () => {
           label="End Time"
           id="endTime"
         />
-        <Input type="text" label="Meeting Id" id="meetingId" />
+        <Input type="text" label="Meeting ID" id="meetingId" />
         <Input type="text" label="Meeting Password" id="meetingPassword" />
         <FormInputDescription
           placeholder="Meeting Description (if any)"
           cols="60"
-          rows="7"
+          rows="5"
         />
+        <FormButton>Submit</FormButton>
       </Form>
-      <FormButton>Submit</FormButton>
     </AddDataContainer>
   );
 };

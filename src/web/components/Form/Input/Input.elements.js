@@ -8,22 +8,33 @@ export const InputContainer = styled.div`
 `;
 
 export const FormInputLabel = styled.label`
-  color: gray;
+  color: black;
   margin-bottom: 10px;
 `;
 
 export const FormInput = styled.input`
-  padding: 5px;
-  border: 1px solid gray;
+  padding: 4px 12px;
+  line-height: 24px;
+  height: 32px;
+  font-size: 14px;
+  border: 1px solid #dbdbdb;
+  vertical-align: middle;
   outline: none;
   border-radius: 2px;
   background-color: transparent;
   color: gray;
+  box-shadow: inset 0 1px 2px rgb(10 10 10 / 10%);
 `;
 
 export const FormInputDescription = styled.textarea`
-  padding: 10px;
-  border: 1px solid gray;
+  padding: 4px 12px;
+  line-height: 24px;
+  /* height: 32px; */
+  font-size: 14px;
+  border: 1px solid #dbdbdb;
+  vertical-align: middle;
+  /* padding: 10px; */
+  /* border: 1px solid gray; */
   outline: none;
   border-radius: 2px;
   background-color: transparent;

@@ -9,6 +9,14 @@ import AddData from "./pages/Dashboard/AddData/AddData";
 const WebApp = () => {
   const [sliderOpen, setSliderOpen] = useState(false);
 
+  useEffect(() => {
+    if (sliderOpen) {
+      setTimeout(() => {
+        setSliderOpen(false);
+      }, 5000);
+    }
+  }, [sliderOpen]);
+
   const toggleSliderOpen = () => {
     setSliderOpen(true);
   };

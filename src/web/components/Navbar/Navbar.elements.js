@@ -11,7 +11,19 @@ export const NavContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   z-index: 999;
-  background-color: rgb(33, 33, 33);
+  background-color: rgb(255, 255, 255);
+  color: black;
 `;
 
-export const NavContainerSection = styled.div``;
+export const NavLogo = styled.img`
+  width: 40px;
+  object-fit: contain;
+  border-radius: 999px;
+  margin-right: 20px;
+`;
+
+export const NavContainerSection = styled.div`
+  display: flex;
+  align-items: center;
+  font-style: italic;
+`;

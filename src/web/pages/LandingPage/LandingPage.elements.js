@@ -11,7 +11,7 @@ export const Section = styled.div`
   align-items: center;
   flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
   background-color: ${({ backgroundColor }) =>
-    backgroundColor ? "rgb(51, 51, 51)" : ""};
+    backgroundColor ? "rgb(255, 255, 255)" : ""};
   margin: 1rem;
   overflow: hidden;
   border-radius: 11px;
@@ -33,7 +33,10 @@ export const SectionContext = styled.div`
 `;
 
 export const SectionContextHeading = styled.h3`
-  color: ${({ heading }) => (heading ? "rgb(118, 118, 118)" : "white")};
+  /* color: ${({ heading }) => (heading ? "rgb(118, 118, 118)" : "white")}; */
+  color: ${({ heading }) =>
+    heading ? "rgb(65, 65, 65)" : "rgb(118, 118, 118)"};
+
   font-size: ${({ heading }) => (heading ? "1.7em" : "2em")};
   font-weight: ${({ heading }) => (heading ? "900" : "normal")};
   padding-bottom: 10px;

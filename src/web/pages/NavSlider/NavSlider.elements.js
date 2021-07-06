@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  padding: 20px;
   z-index: 50;
   height: 100%;
   position: fixed;
-  width: 100%;
+  width: 20%;
   transform: ${({ sliderOpen }) => (sliderOpen ? "" : "translateX(-100%)")};
-  transition: all 0.75s ease-in-out;
+  transition: all 0.45s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: rgb(40, 40, 40);
+  background-color: rgb(230, 230, 230);
 `;
 
 export const NavSliderRow = styled.div`
@@ -19,9 +20,11 @@ export const NavSliderRow = styled.div`
   text-align: center;
   padding: 20px;
   transition: all 0.25s ease-in-out;
+  color: black;
 
   &:hover {
-    background-color: rgb(51, 51, 51);
+    background-color: rgb(220, 220, 220);
+    border-radius: 9px;
   }
 `;
 

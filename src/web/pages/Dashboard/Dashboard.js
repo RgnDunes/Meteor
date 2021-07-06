@@ -39,6 +39,26 @@ const Dasboard = () => {
             <FormButton>View</FormButton>
           </TableData>
         </TableRow>
+
+        <TableRow>
+          <TableData>2</TableData>
+          <TableData>Standup</TableData>
+          <TableData>4:00 PM</TableData>
+          <TableData>5:00 PM</TableData>
+          <TableData>
+            <FormButton>View</FormButton>
+          </TableData>
+        </TableRow>
+
+        <TableRow>
+          <TableData>2</TableData>
+          <TableData>Standup</TableData>
+          <TableData>4:00 PM</TableData>
+          <TableData>5:00 PM</TableData>
+          <TableData>
+            <FormButton>View</FormButton>
+          </TableData>
+        </TableRow>
       </Table>
     </DasboardContainer>
   );
