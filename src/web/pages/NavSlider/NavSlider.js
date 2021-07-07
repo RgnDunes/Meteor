@@ -20,7 +20,20 @@ const NavSlider = ({ sliderOpen }) => {
       .catch((error) => {
         alert(error.message);
       });
-    // console.log(user);
+  };
+
+  const signOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch({
+          type: actionTypes.REMOVE_USER,
+          user: "",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -39,9 +52,13 @@ const NavSlider = ({ sliderOpen }) => {
       <a href="https://rgndunes-v3.web.app/">
         <NavSliderRow>Developers</NavSliderRow>
       </a>
-      <NavSliderButton onClick={() => signIn()}>
-        Login / Register
-      </NavSliderButton>
+      {user ? (
+        <NavSliderButton onClick={() => signOut()}>Logout</NavSliderButton>
+      ) : (
+        <NavSliderButton onClick={() => signIn()}>
+          Login / Register
+        </NavSliderButton>
+      )}
     </Container>
   );
 };
