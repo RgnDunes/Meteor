@@ -20,7 +20,7 @@ const NavSlider = ({ sliderOpen }) => {
       .catch((error) => {
         alert(error.message);
       });
-    console.log(user);
+    // console.log(user);
   };
 
   return (

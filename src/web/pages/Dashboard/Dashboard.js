@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { DasboardContainer, DasboardLink } from "./Dashboard.elements";
 import {
   Table,
@@ -8,8 +8,24 @@ import {
 } from "../../components/Table/Table.elements";
 import { FormButton } from "../../components/Form/Button.elements";
 import { Link } from "react-router-dom";
+import db from '../../../firebase';
+import {useStateValue} from '../../../StateProvider';
 
 const Dasboard = () => {
+  const [meetingData, setMeetingData] = useState([]);
+  const [{ user }, dispatch] = useStateValue();
+  var count = 1;
+
+  useEffect(() => {
+    if (user) {
+      db.collection(user?.email)
+      .onSnapshot(snapshot => {
+        setMeetingData(snapshot.docs.map(doc => doc.data()
+        ))
+      })
+    }
+  }, [])
+
   return (
     <DasboardContainer>
       <Table>
@@ -21,6 +37,7 @@ const Dasboard = () => {
             </Link>
           </TableHeading>
         </TableRow>
+    
         <TableRow>
           <TableHeading>S.No</TableHeading>
           <TableHeading>Meeting Name</TableHeading>
@@ -30,7 +47,24 @@ const Dasboard = () => {
           <TableHeading></TableHeading>
         </TableRow>
 
-        <TableRow>
+        {meetingData?.map(({ date, meetingName, meetingId, meetingPassword, meetingDesc, startTime, endTime }) => {
+          let indivTableData =  (
+            <TableRow>
+              <TableData>{count}</TableData>
+              <TableData>{meetingName}</TableData>
+              <TableData>{date}</TableData>
+              <TableData>{startTime}</TableData>
+              <TableData>{endTime}</TableData>
+              <TableData>
+                <FormButton>View</FormButton>
+              </TableData>
+            </TableRow>
+          );
+          count = count+1;
+          return indivTableData;
+        })}
+
+        {/* <TableRow>
           <TableData>1</TableData>
           <TableData>Sprint</TableData>
           <TableData>2021-07-10</TableData>
@@ -72,7 +106,7 @@ const Dasboard = () => {
           <TableData>
             <FormButton>View</FormButton>
           </TableData>
-        </TableRow>
+        </TableRow> */}
       </Table>
     </DasboardContainer>
   );
