@@ -20,11 +20,17 @@ const Dasboard = () => {
     if (user) {
       db.collection(user?.email)
       .onSnapshot(snapshot => {
-        setMeetingData(snapshot.docs.map(doc => doc.data()
+        setMeetingData(snapshot.docs.map(doc => ({
+          id: doc.id,
+          data : doc.data()})
         ))
       })
     }
   }, [])
+
+  const viewDesc = (id) => {
+    console.log(id);
+  }
 
   return (
     <DasboardContainer>
@@ -47,66 +53,22 @@ const Dasboard = () => {
           <TableHeading></TableHeading>
         </TableRow>
 
-        {meetingData?.map(({ date, meetingName, meetingId, meetingPassword, meetingDesc, startTime, endTime }) => {
+        {meetingData?.map(({ id, data}) => {
           let indivTableData =  (
-            <TableRow>
+            <TableRow key={id}>
               <TableData>{count}</TableData>
-              <TableData>{meetingName}</TableData>
-              <TableData>{date}</TableData>
-              <TableData>{startTime}</TableData>
-              <TableData>{endTime}</TableData>
+              <TableData>{data.meetingName}</TableData>
+              <TableData>{data.date}</TableData>
+              <TableData>{data.startTime}</TableData>
+              <TableData>{data.endTime}</TableData>
               <TableData>
-                <FormButton>View</FormButton>
+                <FormButton onClick={() => viewDesc(id)}>View</FormButton>
               </TableData>
             </TableRow>
           );
           count = count+1;
           return indivTableData;
         })}
-
-        {/* <TableRow>
-          <TableData>1</TableData>
-          <TableData>Sprint</TableData>
-          <TableData>2021-07-10</TableData>
-          <TableData>3:00 PM</TableData>
-          <TableData>4:00 PM</TableData>
-          <TableData>
-            <FormButton>View</FormButton>
-          </TableData>
-        </TableRow>
-
-        <TableRow>
-          <TableData>2</TableData>
-          <TableData>Standup</TableData>
-          <TableData>2021-07-10</TableData>
-          <TableData>4:00 PM</TableData>
-          <TableData>5:00 PM</TableData>
-          <TableData>
-            <FormButton>View</FormButton>
-          </TableData>
-        </TableRow>
-
-        <TableRow>
-          <TableData>2</TableData>
-          <TableData>Standup</TableData>
-          <TableData>2021-07-10</TableData>
-          <TableData>4:00 PM</TableData>
-          <TableData>5:00 PM</TableData>
-          <TableData>
-            <FormButton>View</FormButton>
-          </TableData>
-        </TableRow>
-
-        <TableRow>
-          <TableData>2</TableData>
-          <TableData>Standup</TableData>
-          <TableData>2021-07-10</TableData>
-          <TableData>4:00 PM</TableData>
-          <TableData>5:00 PM</TableData>
-          <TableData>
-            <FormButton>View</FormButton>
-          </TableData>
-        </TableRow> */}
       </Table>
     </DasboardContainer>
   );
