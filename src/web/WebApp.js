@@ -6,9 +6,11 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AddData from "./pages/Dashboard/AddData/AddData";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useStateValue } from "../StateProvider";
 
 const WebApp = () => {
   const [sliderOpen, setSliderOpen] = useState(false);
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     if (sliderOpen) {
@@ -39,12 +41,17 @@ const WebApp = () => {
           <Route path="/home">
             <LandingPage />
           </Route>
-          <Route path="/dashboard/add_data">
-            <AddData />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
+          {user && (
+            <Route path="/dashboard/add_data">
+              <AddData />
+            </Route>
+          )}
+          {user && (
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+          )}
+
           <Route path="/">
             <LandingPage />
           </Route>

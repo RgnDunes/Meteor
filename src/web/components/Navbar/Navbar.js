@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavContainer, NavContainerSection, NavLogo } from "./Navbar.elements";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
-import WebLogo from "../../../meteor.jpeg";
+import WebLogo from "../../../meteorLogo.png";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ sliderOpen, toggleSliderClose, toggleSliderOpen }) => {

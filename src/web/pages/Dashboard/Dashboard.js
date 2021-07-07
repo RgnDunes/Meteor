@@ -24,14 +24,16 @@ const Dasboard = () => {
         <TableRow>
           <TableHeading>S.No</TableHeading>
           <TableHeading>Meeting Name</TableHeading>
+          <TableHeading>Date (yyyy-mm-dd)</TableHeading>
           <TableHeading>Start Time</TableHeading>
           <TableHeading>End Time</TableHeading>
-          <TableHeading>View</TableHeading>
+          <TableHeading></TableHeading>
         </TableRow>
 
         <TableRow>
           <TableData>1</TableData>
           <TableData>Sprint</TableData>
+          <TableData>2021-07-10</TableData>
           <TableData>3:00 PM</TableData>
           <TableData>4:00 PM</TableData>
           <TableData>
@@ -42,6 +44,7 @@ const Dasboard = () => {
         <TableRow>
           <TableData>2</TableData>
           <TableData>Standup</TableData>
+          <TableData>2021-07-10</TableData>
           <TableData>4:00 PM</TableData>
           <TableData>5:00 PM</TableData>
           <TableData>
@@ -52,6 +55,7 @@ const Dasboard = () => {
         <TableRow>
           <TableData>2</TableData>
           <TableData>Standup</TableData>
+          <TableData>2021-07-10</TableData>
           <TableData>4:00 PM</TableData>
           <TableData>5:00 PM</TableData>
           <TableData>
@@ -62,6 +66,7 @@ const Dasboard = () => {
         <TableRow>
           <TableData>2</TableData>
           <TableData>Standup</TableData>
+          <TableData>2021-07-10</TableData>
           <TableData>4:00 PM</TableData>
           <TableData>5:00 PM</TableData>
           <TableData>
