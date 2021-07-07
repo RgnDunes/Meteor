@@ -4,8 +4,11 @@ import Input from "../../../components/Form/Input/Input";
 import { Form } from "../../../components/Form/Form.elements";
 import { FormInputDescription } from "../../../components/Form/Input/Input.elements";
 import { AddDataContainer, AddDataContainerHeading } from "./AddData.elements";
+import {useStateValue} from '../../../../StateProvider';
+import db from '../../../../firebase';
 
 const AddData = () => {
+  const [{ user }, dispatch] = useStateValue();
   const [date, setDate] = useState("");
   const [meetingName, setMeetingName] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -28,7 +31,7 @@ const AddData = () => {
         ? "AM"
         : "PM";
     hr =
-      parseInt(timeLst[0]) >= 12
+      parseInt(timeLst[0]) > 12
         ? (parseInt(timeLst[0]) - 12).toString()
         : timeLst[0];
     let _hr = parseInt(hr) > 9 ? hr : "0" + hr;
@@ -40,7 +43,23 @@ const AddData = () => {
     e.preventDefault();
     let _startTime = timeConversion(startTime);
     let _endTime = timeConversion(endTime);
-    console.log(date);
+    db.collection(user?.email).add({
+      date,
+      meetingName,
+      meetingId,
+      meetingPassword,
+      meetingDesc,
+      startTime: _startTime,
+      endTime:_endTime
+    });
+
+    setDate("");
+    setMeetingName("");
+    setMeetingId("");
+    setMeetingPassword("");
+    setMeetingDesc("");
+    setStartTime("");
+    setEndTime("");
   };
 
   return (
