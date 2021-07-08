@@ -47,3 +47,9 @@ export const TableData = styled.td`
   font-weight: normal;
   color: black;
 `;
+
+export const TableSpan = styled.span`
+  border-bottom: 2px dotted dodgerblue;
+  color: dodgerblue;
+  cursor: pointer;
+`;

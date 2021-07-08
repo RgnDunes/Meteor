@@ -5,6 +5,7 @@ import {
   TableRow,
   TableHeading,
   TableData,
+  TableSpan,
 } from "../../components/Table/Table.elements";
 import { FormButton } from "../../components/Form/Button.elements";
 import { Link } from "react-router-dom";
@@ -56,15 +57,21 @@ const Dasboard = () => {
           <TableHeading>Date (yyyy-mm-dd)</TableHeading>
           <TableHeading>Start Time</TableHeading>
           <TableHeading>End Time</TableHeading>
-          <TableHeading></TableHeading>
-          <TableHeading></TableHeading>
+          <TableHeading>🔍</TableHeading>
+          <TableHeading>🗑</TableHeading>
         </TableRow>
 
         {meetingData?.map(({ id, data }) => {
           let indivTableData = (
             <TableRow key={id}>
               <TableData>{count}</TableData>
-              <TableData>{data.meetingName}</TableData>
+              <TableData>
+                <TableSpan>
+                  <a href={data.meetingLink} target="_blank">
+                    {data.meetingName}
+                  </a>
+                </TableSpan>
+              </TableData>
               <TableData>{data.date}</TableData>
               <TableData>{data.startTime}</TableData>
               <TableData>{data.endTime}</TableData>
