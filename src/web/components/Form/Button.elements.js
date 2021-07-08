@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const FormButton = styled.button`
-  width: calc(100% - 40px);
   text-align: center;
   transition: all 0.25s ease-in-out;
   background-color: ${({ deleteBtn }) =>

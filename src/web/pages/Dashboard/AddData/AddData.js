@@ -3,9 +3,15 @@ import { FormButton } from "../../../components/Form/Button.elements";
 import Input from "../../../components/Form/Input/Input";
 import { Form } from "../../../components/Form/Form.elements";
 import { FormInputDescription } from "../../../components/Form/Input/Input.elements";
-import { AddDataContainer, AddDataContainerHeading } from "./AddData.elements";
+import { AddDataContainer } from "./AddData.elements";
 import { useStateValue } from "../../../../StateProvider";
 import db from "../../../../firebase";
+import {
+  Table,
+  TableRow,
+  TableHeading,
+} from "../../../components/Table/Table.elements";
+import { Link } from "react-router-dom";
 
 const AddData = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -67,7 +73,16 @@ const AddData = () => {
 
   return (
     <AddDataContainer>
-      <AddDataContainerHeading>- ADD MEETING -</AddDataContainerHeading>``
+      <Table>
+        <TableRow>
+          <TableHeading colSpan="4">- Add Meeting -</TableHeading>
+          <TableHeading>
+            <Link to="/dashboard">
+              <FormButton>Back to Dashboard</FormButton>
+            </Link>
+          </TableHeading>
+        </TableRow>
+      </Table>
       <Form onSubmit={submitData}>
         <Input
           type="date"
