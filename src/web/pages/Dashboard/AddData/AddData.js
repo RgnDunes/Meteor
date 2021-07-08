@@ -67,14 +67,15 @@ const AddData = () => {
 
   return (
     <AddDataContainer>
-      <AddDataContainerHeading>- ADD MEETING -</AddDataContainerHeading>
-      <Form>
+      <AddDataContainerHeading>- ADD MEETING -</AddDataContainerHeading>``
+      <Form onSubmit={submitData}>
         <Input
           type="date"
           label="Date"
           id="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          required="required"
         />
         <Input
           type="text"
@@ -82,6 +83,7 @@ const AddData = () => {
           id="meetingName"
           value={meetingName}
           onChange={(e) => setMeetingName(e.target.value)}
+          required="required"
         />
         <Input
           type="text"
@@ -89,6 +91,7 @@ const AddData = () => {
           id="meetingLink"
           value={meetingLink}
           onChange={(e) => setMeetingLink(e.target.value)}
+          required="required"
         />
         <Input
           type="time"
@@ -96,6 +99,7 @@ const AddData = () => {
           id="startTime"
           value={startTime}
           onChange={(e) => setStartTime(e.target.value)}
+          required="required"
         />
         <Input
           type="time"
@@ -104,6 +108,7 @@ const AddData = () => {
           id="endTime"
           value={endTime}
           onChange={(e) => setEndTime(e.target.value)}
+          required="required"
         />
         <Input
           type="text"
@@ -111,6 +116,7 @@ const AddData = () => {
           id="meetingId"
           value={meetingId}
           onChange={(e) => setMeetingId(e.target.value)}
+          required="required"
         />
         <Input
           type="text"
@@ -118,6 +124,7 @@ const AddData = () => {
           id="meetingPassword"
           value={meetingPassword}
           onChange={(e) => setMeetingPassword(e.target.value)}
+          required="required"
         />
         <FormInputDescription
           placeholder="Meeting Description (if any)"
@@ -125,8 +132,9 @@ const AddData = () => {
           rows="5"
           value={meetingDesc}
           onChange={(e) => setMeetingDesc(e.target.value)}
+          required=""
         />
-        <FormButton onClick={(e) => submitData(e)}>Submit</FormButton>
+        <FormButton type="submit">Submit</FormButton>
       </Form>
     </AddDataContainer>
   );
