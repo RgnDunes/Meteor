@@ -12,6 +12,7 @@ export const Table = styled.table`
 
 export const TableRow = styled.tr`
   transition: all 0.25s ease-in-out;
+  cursor: pointer;
 
   &:nth-of-type(odd) {
     background-color: rgb(247, 249, 250);

@@ -5,14 +5,22 @@ export const Container = styled.div`
   z-index: 50;
   height: 100%;
   position: fixed;
-  width: 20%;
-  transform: ${({ sliderOpen }) => (sliderOpen ? "" : "translateX(-100%)")};
+  width: ${({ left }) => (left ? "30%" : "20%")};
+  transform: ${({ sliderOpen, left }) =>
+    sliderOpen
+      ? left
+        ? "translateX(calc(100vw - 100%))"
+        : ""
+      : left
+      ? "translateX(100vw)"
+      : "translateX(-100%)"};
   transition: all 0.45s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   background-color: rgb(230, 230, 230);
+  color: black;
 `;
 
 export const NavSliderRow = styled.div`
