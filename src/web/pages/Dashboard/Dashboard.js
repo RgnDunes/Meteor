@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { DasboardContainer, DasboardLink } from "./Dashboard.elements";
 import {
   Table,
@@ -8,8 +8,8 @@ import {
 } from "../../components/Table/Table.elements";
 import { FormButton } from "../../components/Form/Button.elements";
 import { Link } from "react-router-dom";
-import db from '../../../firebase';
-import {useStateValue} from '../../../StateProvider';
+import db from "../../../firebase";
+import { useStateValue } from "../../../StateProvider";
 
 const Dasboard = () => {
   const [meetingData, setMeetingData] = useState([]);
@@ -18,19 +18,25 @@ const Dasboard = () => {
 
   useEffect(() => {
     if (user) {
-      db.collection(user?.email)
-      .onSnapshot(snapshot => {
-        setMeetingData(snapshot.docs.map(doc => ({
-          id: doc.id,
-          data : doc.data()})
-        ))
-      })
+      db.collection(user?.email).onSnapshot((snapshot) => {
+        setMeetingData(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        );
+      });
     }
-  }, [])
+  }, []);
 
   const viewDesc = (id) => {
     console.log(id);
-  }
+  };
+
+  const deleteData = (id) => {
+    var promptData = prompt("Please type 'DELETE' to confirm.");
+    if (promptData == "DELETE") db.collection(user?.email).doc(id).delete();
+  };
 
   return (
     <DasboardContainer>
@@ -43,7 +49,7 @@ const Dasboard = () => {
             </Link>
           </TableHeading>
         </TableRow>
-    
+
         <TableRow>
           <TableHeading>S.No</TableHeading>
           <TableHeading>Meeting Name</TableHeading>
@@ -51,10 +57,11 @@ const Dasboard = () => {
           <TableHeading>Start Time</TableHeading>
           <TableHeading>End Time</TableHeading>
           <TableHeading></TableHeading>
+          <TableHeading></TableHeading>
         </TableRow>
 
-        {meetingData?.map(({ id, data}) => {
-          let indivTableData =  (
+        {meetingData?.map(({ id, data }) => {
+          let indivTableData = (
             <TableRow key={id}>
               <TableData>{count}</TableData>
               <TableData>{data.meetingName}</TableData>
@@ -62,11 +69,16 @@ const Dasboard = () => {
               <TableData>{data.startTime}</TableData>
               <TableData>{data.endTime}</TableData>
               <TableData>
-                <FormButton onClick={() => viewDesc(id)}>View</FormButton>
+                <FormButton onClick={() => viewDesc(id)}>🔍 View</FormButton>
+              </TableData>
+              <TableData>
+                <FormButton deleteBtn="true" onClick={() => deleteData(id)}>
+                  🗑 Delete
+                </FormButton>
               </TableData>
             </TableRow>
           );
-          count = count+1;
+          count = count + 1;
           return indivTableData;
         })}
       </Table>

@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const FormButton = styled.button`
-  width: calc(100% - 80px);
+  width: calc(100% - 40px);
   text-align: center;
   transition: all 0.25s ease-in-out;
-  background-color: rgb(103, 104, 246);
+  background-color: ${({ deleteBtn }) =>
+    deleteBtn ? "red" : "rgb(103, 104, 246)"};
   color: white;
   font-weight: bolder;
   letter-spacing: 1.5;
@@ -25,6 +26,7 @@ export const FormButton = styled.button`
   padding: 5px 16px;
 
   &:hover {
-    background-color: rgb(52, 128, 197);
+    background-color: ${({ deleteBtn }) =>
+      deleteBtn ? "orange" : "rgb(52, 128, 197)"};
   }
 `;
