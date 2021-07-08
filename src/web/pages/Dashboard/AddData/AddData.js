@@ -4,13 +4,14 @@ import Input from "../../../components/Form/Input/Input";
 import { Form } from "../../../components/Form/Form.elements";
 import { FormInputDescription } from "../../../components/Form/Input/Input.elements";
 import { AddDataContainer, AddDataContainerHeading } from "./AddData.elements";
-import {useStateValue} from '../../../../StateProvider';
-import db from '../../../../firebase';
+import { useStateValue } from "../../../../StateProvider";
+import db from "../../../../firebase";
 
 const AddData = () => {
   const [{ user }, dispatch] = useStateValue();
   const [date, setDate] = useState("");
   const [meetingName, setMeetingName] = useState("");
+  const [meetingLink, setMeetingLink] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [meetingId, setMeetingId] = useState("");
@@ -50,7 +51,8 @@ const AddData = () => {
       meetingPassword,
       meetingDesc,
       startTime: _startTime,
-      endTime:_endTime
+      endTime: _endTime,
+      meetingLink,
     });
 
     setDate("");
@@ -60,6 +62,7 @@ const AddData = () => {
     setMeetingDesc("");
     setStartTime("");
     setEndTime("");
+    setMeetingLink("");
   };
 
   return (
@@ -79,6 +82,13 @@ const AddData = () => {
           id="meetingName"
           value={meetingName}
           onChange={(e) => setMeetingName(e.target.value)}
+        />
+        <Input
+          type="text"
+          label="Meeting Link"
+          id="meetingLink"
+          value={meetingLink}
+          onChange={(e) => setMeetingLink(e.target.value)}
         />
         <Input
           type="time"
