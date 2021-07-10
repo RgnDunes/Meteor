@@ -9,6 +9,10 @@ import {
   DashboardRowDataBodyRowSpan,
 } from "./Dashboard.elements";
 import {
+  FormInput,
+  FormInputDescription,
+} from "../../components/Form/Input/Input.elements";
+import {
   Table,
   TableRow,
   TableHeading,
@@ -23,11 +27,19 @@ import { useStateValue } from "../../../StateProvider";
 import CloseIcon from "@material-ui/icons/Close";
 
 const Dasboard = () => {
-  const [meetingData, setMeetingData] = useState([]);
   const [{ user }, dispatch] = useStateValue();
+  const [meetingData, setMeetingData] = useState([]);
   const [openDescSlider, setOpenDescSlider] = useState(false);
   const [idSelected, setIdSelected] = useState("");
   const [dataSelected, setdataSelected] = useState({});
+
+  const [updatedDate, setUpdatedDate] = useState("");
+  const [updatedMeetingName, setUpdatedMeetingName] = useState("");
+  const [updatedStartTime, setUpdatedStartTime] = useState("");
+  const [updatedEndTime, setUpdatedEndTime] = useState("");
+  const [updatedMeetingId, setUpdatedMeetingId] = useState("");
+  const [updatedMeetingPassword, setUpdatedMeetingPassword] = useState("");
+  const [updatedMeetingDesc, setUpdatedMeetingDesc] = useState("");
 
   var count = 1;
 
@@ -47,8 +59,26 @@ const Dasboard = () => {
     }
   }, []);
 
-  const viewDesc = (id) => {
-    console.log(id);
+  const timeConversion = (time) => {
+    let timeLst = time.split(":");
+    let hr = "";
+    let _time = "";
+    let sals = "";
+    sals =
+      parseInt(timeLst[0]) <= 11 ||
+      (parseInt(timeLst[0]) > 11 &&
+        parseInt(timeLst[0]) < 12 &&
+        parseInt(timeLst[1]) <= 59) ||
+      (parseInt(timeLst[0]) == 12 && parseInt(timeLst[1]) < 1)
+        ? "AM"
+        : "PM";
+    hr =
+      parseInt(timeLst[0]) > 12
+        ? (parseInt(timeLst[0]) - 12).toString()
+        : timeLst[0];
+    let _hr = parseInt(hr) > 9 ? hr : "0" + hr;
+    _time = hr + ":" + timeLst[1] + " " + sals;
+    return _time;
   };
 
   const deleteData = (id) => {
@@ -65,6 +95,23 @@ const Dasboard = () => {
     }
   };
 
+  const updateMeetingData = () => {
+    db.collection(user?.email)
+      .doc("niguIP5Zk6MKgQKrbL9K")
+      .collection("allMeetings")
+      .doc(idSelected)
+      .update({
+        date: updatedDate,
+        meetingName: updatedMeetingName,
+        meetingId: updatedMeetingId,
+        meetingPassword: updatedMeetingPassword,
+        meetingDesc: updatedMeetingDesc,
+        startTime: updatedStartTime,
+        endTime: updatedEndTime,
+        meetingLink: dataSelected.meetingLink,
+      });
+  };
+
   const toggleDescSliderClose = () => {
     setOpenDescSlider(false);
   };
@@ -73,6 +120,13 @@ const Dasboard = () => {
     setIdSelected(id);
     setdataSelected(data);
     setOpenDescSlider(true);
+    setUpdatedDate(data.date);
+    setUpdatedEndTime(data.endTime);
+    setUpdatedMeetingName(data.meetingName);
+    setUpdatedMeetingDesc(data.meetingDesc);
+    setUpdatedStartTime(data.startTime);
+    setUpdatedMeetingPassword(data.meetingPassword);
+    setUpdatedMeetingId(data.meetingId);
   };
 
   return (
@@ -80,8 +134,14 @@ const Dasboard = () => {
       <Container sliderOpen={openDescSlider} left={true}>
         <DashboardRowDataHeader>
           <DashboardRowDataHeaderSection>
-            {/* {console.log(dataSelected)} */}
-            {dataSelected.meetingName}
+            <FormInput
+              type="text"
+              value={updatedMeetingName}
+              updateField={true}
+              fontSize="20px"
+              fontWeight="bolder"
+              onChange={(e) => setUpdatedMeetingName(e.target.value)}
+            />
           </DashboardRowDataHeaderSection>
           <DashboardRowDataHeaderSection>
             <CloseIcon onClick={toggleDescSliderClose} />
@@ -90,7 +150,14 @@ const Dasboard = () => {
         <DashboardRowDataBody>
           <DashboardRowDataBodyRow>
             <DashboardRowDataBodyRowSpan>Date :</DashboardRowDataBodyRowSpan>{" "}
-            {dataSelected.date}
+            <FormInput
+              value={updatedDate}
+              type="date"
+              updateField={true}
+              fontSize="14px"
+              fontWeight="normal"
+              onChange={(e) => setUpdatedDate(e.target.value)}
+            />
           </DashboardRowDataBodyRow>
           {dataSelected.meetingLink && (
             <DashboardRowDataBodyRow>
@@ -103,32 +170,69 @@ const Dasboard = () => {
             <DashboardRowDataBodyRowSpan>
               Start Time
             </DashboardRowDataBodyRowSpan>{" "}
-            {dataSelected.startTime}
+            <FormInput
+              value={updatedStartTime}
+              type="time"
+              updateField={true}
+              fontSize="14px"
+              fontWeight="normal"
+              onChange={(e) => setUpdatedStartTime(e.target.value)}
+            />
           </DashboardRowDataBodyRow>
           <DashboardRowDataBodyRow>
             <DashboardRowDataBodyRowSpan>
               End Time :
             </DashboardRowDataBodyRowSpan>{" "}
-            {dataSelected.endTime}
+            <FormInput
+              value={updatedEndTime}
+              type="time"
+              updateField={true}
+              fontSize="14px"
+              fontWeight="normal"
+              onChange={(e) => setUpdatedEndTime(e.target.value)}
+            />
           </DashboardRowDataBodyRow>
           <DashboardRowDataBodyRow>
             <DashboardRowDataBodyRowSpan>
               Meeting ID :
             </DashboardRowDataBodyRowSpan>{" "}
-            {dataSelected.meetingId}
+            <FormInput
+              value={updatedMeetingId}
+              type="text"
+              updateField={true}
+              fontSize="14px"
+              fontWeight="normal"
+              onChange={(e) => setUpdatedMeetingId(e.target.value)}
+            />
           </DashboardRowDataBodyRow>
           <DashboardRowDataBodyRow>
             <DashboardRowDataBodyRowSpan>
               Meeting Password :
             </DashboardRowDataBodyRowSpan>{" "}
-            {dataSelected.meetingPassword}
+            <FormInput
+              value={updatedMeetingPassword}
+              type="text"
+              updateField={true}
+              fontSize="14px"
+              fontWeight="normal"
+              onChange={(e) => setUpdatedMeetingPassword(e.target.value)}
+            />
           </DashboardRowDataBodyRow>
           <DashboardRowDataBodyRow>
             <DashboardRowDataBodyRowSpan>
               Description :
             </DashboardRowDataBodyRowSpan>{" "}
-            {dataSelected.meetingDesc}
+            <FormInputDescription
+              value={updatedMeetingDesc}
+              rows="4"
+              cols="25"
+              updateField={true}
+              fontSize="14px"
+              fontWeight="normal"
+              onChange={(e) => setUpdatedMeetingDesc(e.target.value)}
+            />
           </DashboardRowDataBodyRow>
+          <FormButton onClick={updateMeetingData}>Update</FormButton>
         </DashboardRowDataBody>
       </Container>
 
@@ -164,10 +268,12 @@ const Dasboard = () => {
                 </TableSpan>
               </TableData>
               <TableData>{data.date}</TableData>
-              <TableData>{data.startTime}</TableData>
-              <TableData>{data.endTime}</TableData>
-              <TableData onClick={() => toggleDescSliderOpen(data, id)}>
-                <FormButton onClick={() => viewDesc(id)}>🔍 View</FormButton>
+              <TableData>{timeConversion(data.startTime)}</TableData>
+              <TableData>{timeConversion(data.endTime)}</TableData>
+              <TableData>
+                <FormButton onClick={() => toggleDescSliderOpen(data, id)}>
+                  🔍 View / Edit
+                </FormButton>
               </TableData>
               <TableData>
                 <FormButton deleteBtn="true" onClick={() => deleteData(id)}>

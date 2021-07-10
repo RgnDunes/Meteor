@@ -24,32 +24,8 @@ const AddData = () => {
   const [meetingPassword, setMeetingPassword] = useState("");
   const [meetingDesc, setMeetingDesc] = useState("");
 
-  const timeConversion = (time) => {
-    let timeLst = time.split(":");
-    let hr = "";
-    let _time = "";
-    let sals = "";
-    sals =
-      parseInt(timeLst[0]) <= 11 ||
-      (parseInt(timeLst[0]) > 11 &&
-        parseInt(timeLst[0]) < 12 &&
-        parseInt(timeLst[1]) <= 59) ||
-      (parseInt(timeLst[0]) == 12 && parseInt(timeLst[1]) < 1)
-        ? "AM"
-        : "PM";
-    hr =
-      parseInt(timeLst[0]) > 12
-        ? (parseInt(timeLst[0]) - 12).toString()
-        : timeLst[0];
-    let _hr = parseInt(hr) > 9 ? hr : "0" + hr;
-    _time = hr + ":" + timeLst[1] + " " + sals;
-    return _time;
-  };
-
   const submitData = (e) => {
     e.preventDefault();
-    let _startTime = timeConversion(startTime);
-    let _endTime = timeConversion(endTime);
     db.collection(user?.email)
       .doc("niguIP5Zk6MKgQKrbL9K")
       .collection("allMeetings")
@@ -59,8 +35,8 @@ const AddData = () => {
         meetingId,
         meetingPassword,
         meetingDesc,
-        startTime: _startTime,
-        endTime: _endTime,
+        startTime,
+        endTime,
         meetingLink,
       });
 
