@@ -50,16 +50,19 @@ const AddData = () => {
     e.preventDefault();
     let _startTime = timeConversion(startTime);
     let _endTime = timeConversion(endTime);
-    db.collection(user?.email).add({
-      date,
-      meetingName,
-      meetingId,
-      meetingPassword,
-      meetingDesc,
-      startTime: _startTime,
-      endTime: _endTime,
-      meetingLink,
-    });
+    db.collection(user?.email)
+      .doc("niguIP5Zk6MKgQKrbL9K")
+      .collection("allMeetings")
+      .add({
+        date,
+        meetingName,
+        meetingId,
+        meetingPassword,
+        meetingDesc,
+        startTime: _startTime,
+        endTime: _endTime,
+        meetingLink,
+      });
 
     setDate("");
     setMeetingName("");

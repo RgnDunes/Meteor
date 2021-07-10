@@ -33,14 +33,17 @@ const Dasboard = () => {
 
   useEffect(() => {
     if (user) {
-      db.collection(user?.email).onSnapshot((snapshot) => {
-        setMeetingData(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            data: doc.data(),
-          }))
-        );
-      });
+      db.collection(user?.email)
+        .doc("niguIP5Zk6MKgQKrbL9K")
+        .collection("allMeetings")
+        .onSnapshot((snapshot) => {
+          setMeetingData(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          );
+        });
     }
   }, []);
 
@@ -51,7 +54,11 @@ const Dasboard = () => {
   const deleteData = (id) => {
     var promptData = prompt("Please type 'DELETE' to confirm.");
     if (promptData == "DELETE") {
-      db.collection(user?.email).doc(id).delete();
+      db.collection(user?.email)
+        .doc("niguIP5Zk6MKgQKrbL9K")
+        .collection("allMeetings")
+        .doc(id)
+        .delete();
       toggleDescSliderClose();
       setIdSelected("");
       setdataSelected("");
