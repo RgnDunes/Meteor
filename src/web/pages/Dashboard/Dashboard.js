@@ -50,7 +50,12 @@ const Dasboard = () => {
 
   const deleteData = (id) => {
     var promptData = prompt("Please type 'DELETE' to confirm.");
-    if (promptData == "DELETE") db.collection(user?.email).doc(id).delete();
+    if (promptData == "DELETE") {
+      db.collection(user?.email).doc(id).delete();
+      toggleDescSliderClose();
+      setIdSelected("");
+      setdataSelected("");
+    }
   };
 
   const toggleDescSliderClose = () => {
@@ -58,9 +63,9 @@ const Dasboard = () => {
   };
 
   const toggleDescSliderOpen = (data, id) => {
-    setOpenDescSlider(true);
     setIdSelected(id);
     setdataSelected(data);
+    setOpenDescSlider(true);
   };
 
   return (
@@ -142,7 +147,7 @@ const Dasboard = () => {
 
         {meetingData?.map(({ id, data }) => {
           let indivTableData = (
-            <TableRow key={id} onClick={() => toggleDescSliderOpen(data, id)}>
+            <TableRow key={id}>
               <TableData>{count}</TableData>
               <TableData>
                 <TableSpan>
@@ -154,7 +159,7 @@ const Dasboard = () => {
               <TableData>{data.date}</TableData>
               <TableData>{data.startTime}</TableData>
               <TableData>{data.endTime}</TableData>
-              <TableData>
+              <TableData onClick={() => toggleDescSliderOpen(data, id)}>
                 <FormButton onClick={() => viewDesc(id)}>🔍 View</FormButton>
               </TableData>
               <TableData>
