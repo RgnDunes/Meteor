@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Meteor/static/css/main.3aa7520e.chunk.css",
+    "main.js": "/Meteor/static/js/main.c771cc9c.chunk.js",
+    "main.js.map": "/Meteor/static/js/main.c771cc9c.chunk.js.map",
+    "runtime-main.js": "/Meteor/static/js/runtime-main.266b5c5e.js",
+    "runtime-main.js.map": "/Meteor/static/js/runtime-main.266b5c5e.js.map",
+    "static/js/2.0365e289.chunk.js": "/Meteor/static/js/2.0365e289.chunk.js",
+    "static/js/2.0365e289.chunk.js.map": "/Meteor/static/js/2.0365e289.chunk.js.map",
+    "static/js/3.4fd4d931.chunk.js": "/Meteor/static/js/3.4fd4d931.chunk.js",
+    "static/js/3.4fd4d931.chunk.js.map": "/Meteor/static/js/3.4fd4d931.chunk.js.map",
+    "index.html": "/Meteor/index.html",
+    "static/css/main.3aa7520e.chunk.css.map": "/Meteor/static/css/main.3aa7520e.chunk.css.map",
+    "static/js/2.0365e289.chunk.js.LICENSE.txt": "/Meteor/static/js/2.0365e289.chunk.js.LICENSE.txt",
+    "static/media/meteorLogo.6eb81745.png": "/Meteor/static/media/meteorLogo.6eb81745.png",
+    "static/media/section1.a3bfae06.svg": "/Meteor/static/media/section1.a3bfae06.svg",
+    "static/media/section2.d3d292d1.svg": "/Meteor/static/media/section2.d3d292d1.svg",
+    "static/media/section3.5b30b765.svg": "/Meteor/static/media/section3.5b30b765.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.266b5c5e.js",
+    "static/js/2.0365e289.chunk.js",
+    "static/css/main.3aa7520e.chunk.css",
+    "static/js/main.c771cc9c.chunk.js"
+  ]
+}
